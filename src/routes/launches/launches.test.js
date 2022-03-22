@@ -4,8 +4,12 @@ const app = require("../../app");
 const { loadPlanetsData } = require('../../models/planets.model');
 const {mongoConnect, mongoDisconnect} = require('../../services/mongo');
 
+jest.setTimeout(60000);
+
 describe('Launches API', () => {
     beforeAll(async () => {
+        require('dotenv').config();
+
         await mongoConnect();
         await loadPlanetsData();
     });
