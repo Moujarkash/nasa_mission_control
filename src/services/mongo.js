@@ -1,6 +1,5 @@
 const mongoose = require('mongoose');
-
-const MONGO_URL = process.env.MONGO_URL;
+const config = require('../../config/config.js');
 
 mongoose.connection.once('open', () => {
     console.log('MongoDb is ready...')
@@ -11,7 +10,7 @@ mongoose.connection.on('error', (error) => {
 });
 
 async function mongoConnect() {
-    await mongoose.connect(MONGO_URL);
+    await mongoose.connect(config.MONGO_URL);
 }
 
 async function mongoDisconnect() {
